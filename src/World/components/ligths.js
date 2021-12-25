@@ -2,20 +2,21 @@ import { DirectionalLight, AmbientLight, HemisphereLight } from 'https://unpkg.c
 
 function createLights() {
 
-    const light = new DirectionalLight('white', 10);
+    const mainLight = new DirectionalLight('white', 2);
 
-    light.position.set(10, 10, 10);
+    mainLight.position.set(10, 20, 20);
     // const ambientLight = new AmbientLight('white', 2);
     const ambientLight = new HemisphereLight(
         'white', // bright sky color
         'darkslategrey', // dim ground color
-        6, // intensity
+        3, // intensity
     );
 
-    light.tick = (delta) => {
-        light.position.x += 1;
-    }
-    return { light, ambientLight };
+    // light.tick = (delta) => {
+    //     light.position.x += 1;
+    // }
+
+    return { mainLight, ambientLight };
 }
 
 export { createLights };

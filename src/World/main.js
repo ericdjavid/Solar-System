@@ -30,6 +30,8 @@ function main() {
     // We’ll refer to the second technique as rendering on demand.
     //world.render();
 
+
+
     // window.addEventListener('click', () => {
     //     console.log('clicked');
     //     clicking(world);

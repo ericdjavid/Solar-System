@@ -12,25 +12,25 @@ function createSun() {
     // a group holds other objects
     // but cannot be seen itself
 
-    const group = new Group();
-    const geometry = new SphereBufferGeometry(1.2, 30, 30);
+    // const group = new Group();
+    const geometry = new SphereBufferGeometry(4, 30, 30);
 
     const material = new TextureLoader().load('assets/textures/sun.jpeg');
-    const sunMaterial = new MeshBasicMaterial({ map: material });
+    const sunMaterial = new MeshStandardMaterial({ map: material });
 
     const Sun = new Mesh(geometry, sunMaterial);
 
     Sun.position.set(0, 0, 0);
     // add the sphere to the group
-    group.add(Sun);
+    // group.add(Sun);
     const radiansPerSecond = MathUtils.degToRad(5);
-    group.tick = (delta) => {
+    Sun.tick = (delta) => {
         // Sun.rotation.z += radiansPerSecond * delta;
         // Sun.rotation.x += radiansPerSecond * delta;
         Sun.rotation.y -= radiansPerSecond * delta;
     };
 
-    return group;
+    return Sun;
 }
 
 export { createSun };
