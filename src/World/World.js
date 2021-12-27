@@ -9,6 +9,14 @@ import { createMeshGroup } from './components/saturnGroup.js';
 import { createSun } from './components/Sun.js';
 import { createPlanet } from './components/planet.js';
 
+import {
+    SphereBufferGeometry,
+    Group,
+    MathUtils,
+    Mesh,
+    MeshStandardMaterial,
+} from 'https://unpkg.com/three@0.126.1/build/three.module.js';
+
 // These variables are module-scoped: we cannot access them
 // from outside the module
 let camera;
@@ -28,7 +36,7 @@ class World {
 
         const controls = createControls(camera, renderer.domElement);
         const { mainLight, ambientLight } = createLights();
-        // const saturnGroup = createMeshGroup();
+        const saturnGroup = createMeshGroup();
         const sun = createSun();
 
         // const mercury = {};
@@ -56,10 +64,22 @@ class World {
         const mercury = createPlanet("mercury", 0.4, 8, 2, "./assets/textures/2k_mercury.jpg");
         const venus = createPlanet("venus", 0.4, 14, 2, "./assets/textures/venus.jpg");
         const earth = createPlanet("earth", 1, 20, 2, "./assets/textures/earth.jpg");
+        const mars = createPlanet("mars", 0.9, 25, 2, "./assets/textures/mars.jpg");
+        const jupiter = createPlanet("jupiter", 2, 35, 2, "./assets/textures/jupiter.jpg");
+        const saturne = createPlanet("saturne", 2, 40, 2, "./assets/textures/saturn.jpg");
+        const uranus = createPlanet("uranus", 1, 45, 2, "./assets/textures/uranus.jpg");
 
-        loop.updatables.push(sun, camera, mercury, venus, earth);
+        const group = new Group();
+        group.add(sun, mercury, venus, earth, mars, jupiter, saturne, uranus);
+        group.tick = (delta) => {
+            group.rotation.y -= delta * MathUtils.degToRad(20);
+        };
+
+        loop.updatables.push(group);
+        loop.updatables.push(saturnGroup, camera, mercury, venus, earth);
         loop.updatables.push(controls);
-        scene.add(sun, ambientLight, mercury, venus, earth);
+        // scene.add(saturnGroup, ambientLight, mercury, venus, earth, mars, jupiter, saturne, uranus);
+        scene.add(group, ambientLight);
         // console.log(scene.children);
 
         // resize the elements of the world

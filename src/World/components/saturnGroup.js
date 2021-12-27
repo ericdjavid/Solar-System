@@ -26,6 +26,8 @@ function createMeshGroup() {
 
         // position the spheres on around a circle
         sphere.scale.multiplyScalar(0.4);
+        // sphere.position.x = Math.cos(10 * Math.PI * i);
+        // sphere.position.z = Math.sin(10 * Math.PI * i);
         sphere.position.x = Math.cos(2 * Math.PI * i);
         sphere.position.z = Math.sin(2 * Math.PI * i);
         // sphere.position.y = 0.1;

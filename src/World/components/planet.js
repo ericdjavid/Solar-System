@@ -8,13 +8,19 @@ function createPlanet(name, radius, distance, revolution, texture) {
     const okMaterial = new MeshStandardMaterial({ map: material });
 
     const mesh = new Mesh(geo, okMaterial);
+    // mesh.position.x = Math.cos(2 * Math.PI * 0.5) + distance;
+    // mesh.position.z = Math.sin(2 * Math.PI * 0.5) + distance;
     mesh.position.x += distance;
 
     const radiansPerSecond = MathUtils.degToRad(5);
     mesh.tick = (delta) => {
-        // Sun.rotation.z += radiansPerSecond * delta;
-        // Sun.rotation.x += radiansPerSecond * delta;
-        mesh.rotation.y -= radiansPerSecond * delta;
+
+        // mesh.rotation.y -= delta * MathUtils.degToRad(60);
+        // mesh.rotation.z -= delta * MathUtils.degToRad(60);
+        // var time = Date.now() * 0.0005;
+        // mesh.position.x = Math.cos(2 * Math.PI * distance);
+        // mesh.position.y = Math.cos(2 * Math.PI * distance);
+        // mesh.position.z = Math.cos(time * 8) * 4;
     };
 
     return (mesh);
