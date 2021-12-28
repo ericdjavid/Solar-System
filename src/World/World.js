@@ -10,6 +10,7 @@ import { createSun } from './components/Sun.js';
 import { createPlanet } from './components/planet.js';
 
 import {
+    CubeTextureLoader,
     SphereBufferGeometry,
     Group,
     MathUtils,
@@ -30,9 +31,22 @@ class World {
         scene = createScene();
         renderer = createRenderer();
 
+        const loader = new CubeTextureLoader();
+        const texture = loader.load([
+            './resources/corona_ft.png',
+            './resources/corona_bk.png',
+            './resources/corona_up.png',
+            './resources/corona_dn.png',
+            './resources/corona_rt.png',
+            './resources/corona_lf.png',
+        ]);
+        scene.background = texture;
+
         container.append(renderer.domElement);
         // call loop frame for animation
         loop = new Loop(camera, scene, renderer);
+
+
 
         const controls = createControls(camera, renderer.domElement);
         const { mainLight, ambientLight } = createLights();
