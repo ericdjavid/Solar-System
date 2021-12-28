@@ -10,7 +10,7 @@ function createMeshGroup() {
     // a group holds other objects
     // but cannot be seen itself
     const group = new Group();
-    const geometry = new SphereBufferGeometry(0.25, 16, 16);
+    const geometry = new SphereBufferGeometry(0.5, 16, 16);
 
     const material = new MeshStandardMaterial({
         color: 'indigo',
@@ -20,6 +20,7 @@ function createMeshGroup() {
 
     // add the sphere to the group
     group.add(protoSphere);
+    group.position.x = -20;
 
     for (let i = 0; i < 1; i += 0.05) {
         const sphere = protoSphere.clone();

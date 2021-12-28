@@ -75,26 +75,24 @@ class World {
         //     loop.updatables.push();
         //     scene.add(planet);
         // }
-        const mercury = createPlanet("mercury", 0.4, 8, 2, "./assets/textures/2k_mercury.jpg");
-        const venus = createPlanet("venus", 0.4, 14, 2, "./assets/textures/venus.jpg");
-        const earth = createPlanet("earth", 1, 20, 2, "./assets/textures/earth.jpg");
-        const mars = createPlanet("mars", 0.9, 25, 2, "./assets/textures/mars.jpg");
-        const jupiter = createPlanet("jupiter", 2, 35, 2, "./assets/textures/jupiter.jpg");
-        const saturne = createPlanet("saturne", 2, 40, 2, "./assets/textures/saturn.jpg");
-        const uranus = createPlanet("uranus", 1, 45, 2, "./assets/textures/uranus.jpg");
+        const mercury = createPlanet("mercury", 0.4, 8, 2, "./assets/textures/2k_mercury.jpg", 4);
+        const venus = createPlanet("venus", 0.4, 14, 2, "./assets/textures/venus.jpg", 2);
+        const earth = createPlanet("earth", 1, 20, 2, "./assets/textures/earth.jpg", 1);
+        const mars = createPlanet("mars", 0.9, 25, 2, "./assets/textures/mars.jpg", 0.5);
+        const jupiter = createPlanet("jupiter", 2, 35, 2, "./assets/textures/jupiter.jpg", 0.09);
+        const saturne = createPlanet("saturne", 2, 40, 2, "./assets/textures/saturn.jpg", 0.033);
+        const uranus = createPlanet("uranus", 1, 45, 2, "./assets/textures/uranus.jpg", 0.011);
 
-        const group = new Group();
-        group.add(sun, mercury, venus, earth, mars, jupiter, saturne, uranus);
-        group.tick = (delta) => {
-            group.rotation.y -= delta * MathUtils.degToRad(20);
-        };
+        // const group = new Group();
+        // group.add(sun, mercury, venus, earth, mars, jupiter, saturne, uranus);
+        // group.tick = (delta) => {
+        //     group.rotation.y -= delta * MathUtils.degToRad(20);
+        // };
 
-        loop.updatables.push(group);
-        loop.updatables.push(saturnGroup, camera, mercury, venus, earth);
+        // loop.updatables.push(group);
+        loop.updatables.push(sun, saturnGroup, camera, mercury, venus, earth, mars, jupiter, saturne, uranus);
         loop.updatables.push(controls);
-        // scene.add(saturnGroup, ambientLight, mercury, venus, earth, mars, jupiter, saturne, uranus);
-        scene.add(group, ambientLight);
-        // console.log(scene.children);
+        scene.add(sun, saturnGroup, ambientLight, mercury, venus, earth, mars, jupiter, saturne, uranus);
 
         // resize the elements of the world
         const resizer = new Resizer(container, camera, renderer);
