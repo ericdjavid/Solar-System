@@ -13,7 +13,7 @@ function createSun() {
     // but cannot be seen itself
 
     // const group = new Group();
-    const geometry = new SphereBufferGeometry(4, 30, 30);
+    const geometry = new SphereBufferGeometry(30, 50, 50);
 
     const material = new TextureLoader().load('assets/textures/sun.jpeg');
     const sunMaterial = new MeshStandardMaterial({ map: material });

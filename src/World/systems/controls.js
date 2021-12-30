@@ -5,6 +5,10 @@ function createControls(camera, canvas) {
 
     controls.enableDamping = true;
     controls.tick = () => controls.update();
+
+
+    controls.target.set(60, 0, 0);
+    controls.update();
     return controls;
 }
 
