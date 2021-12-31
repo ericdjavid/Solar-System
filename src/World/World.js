@@ -24,6 +24,7 @@ let camera;
 let renderer;
 let scene;
 let loop;
+let controls;
 
 class World {
     constructor(container) {
@@ -48,7 +49,7 @@ class World {
 
 
 
-        const controls = createControls(camera, renderer.domElement);
+        controls = createControls(camera, renderer.domElement);
         const { mainLight, ambientLight } = createLights();
         const saturnGroup = createMeshGroup();
         const sun = createSun();
@@ -101,7 +102,8 @@ class World {
         //     this.render();
         // };
         window.addEventListener('click', () => {
-            console.log(controls);
+            console.log(earth);
+            controls.target.copy(earth.children[0].position)
         })
     }
     render() {
